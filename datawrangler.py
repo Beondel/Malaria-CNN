@@ -1,5 +1,7 @@
 from pathlib import Path
 import pickle
+from PIL import Image
+import numpy as np
 
 def create_datafile():
     image_index = []
