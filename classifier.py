@@ -9,7 +9,7 @@ class CNN(nn.Module):
         self.pool = nn.MaxPool2d(2, 2)
         self.fc1 = nn.Linear(16 * 16 * 16, 16 * 16)
         self.fc2 = nn.Linear(16 * 16, 16)
-        self.fc3 = nn.Linear(16 * 16, 1)
+        self.fc3 = nn.Linear(16, 1)
 
     def forward(self, X):
         X = self.pool(F.relu(self.conv1(X)))
@@ -17,5 +17,5 @@ class CNN(nn.Module):
         X = X.view(-1, 16 * 16 * 16)
         X = F.relu(self.fc1(X))
         X = F.relu(self.fc2(X))
-        X = F.softmax(self.fc3(X))
+        X = F.softmax(self.fc3(X), dim=0)
         return X

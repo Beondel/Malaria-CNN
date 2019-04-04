@@ -18,5 +18,5 @@ class MalariaDataset(Dataset):
         label = self.labels[index]
         if self.transforms:
             img = self.transforms(img)
-        return {'image': img, 'label': label}
+        return img, label
     
